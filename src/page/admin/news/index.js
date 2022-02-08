@@ -1,8 +1,9 @@
+import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
-import data from "../../../data";
 
 const AdminNewsPage = {
-    render() {
+    async  render() {
+        const response = await axios.get("https://5e79b4b817314d00161333da.mockapi.io/posts");
         return /* html */`
         <div class="min-h-full">
             ${NavAdmin.render()}
@@ -53,7 +54,7 @@ const AdminNewsPage = {
                           </tr>
                         </thead>
                          <tbody class="bg-white divide-y divide-gray-200">
-                        ${data.map((post) => `
+                        ${response.data.map((post) => `
                         
                        
                         <tr>
@@ -82,7 +83,7 @@ const AdminNewsPage = {
                             <a href="/admin/dashboard/edit/${post.id}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                           </span>
                             <span class="px-6 py-4 text-right text-sm font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">DELETE</a>
+                            <button data-id="${post.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded">Delete</button>
                           </span>
                           </td>
                           <td class="px-6 py-4 text-sm text-gray-500">
@@ -92,7 +93,7 @@ const AdminNewsPage = {
                         </tr>
               
                         
-                        `)}
+                        `).join("")}
                        
                           <!-- More people... -->
                         </tbody>
@@ -114,5 +115,19 @@ const AdminNewsPage = {
     
                     `;
     },
+    afterRender() {
+        const bnts = document.querySelectorAll(".btn");
+        bnts.forEach((bnt) => {
+            const { id } = bnt.dataset;
+            bnt.addEventListener("click", () => {
+                const confirm = window.confirm("bạn có chắc muốn xóa không");
+
+                if (confirm) {
+                    axios.delete(`https://5e79b4b817314d00161333da.mockapi.io/posts/${id}`);
+                }
+            });
+        });
+    },
 };
+
 export default AdminNewsPage;

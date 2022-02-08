@@ -13,15 +13,16 @@ import AddNewsPage from "./page/admin/news/add";
 import NewsEdit from "./page/admin/news/edit";
 
 const router = new Navigo("/", { linksSelector: "a" });
-const print = (content) => {
+const print = async (content) => {
     // document.getElementById("header").innerHTML = Header.render();
-    document.getElementById("app").innerHTML = content;
+    document.getElementById("app").innerHTML = await content.render();
+    if (content.afterRender) await content.afterRender();
     // document.getElementById("footer").innerHTML = Footer.render();
 };
 
 router.on({
     "/": () => {
-        print(HomPage.render());
+        print(HomPage);
     },
     "/about": () => {
         print(AboutPage.render());
@@ -43,7 +44,7 @@ router.on({
         print(Dashboard.render());
     },
     "/admin/news": () => {
-        print(AdminNewsPage.render());
+        print(AdminNewsPage);
     },
     "/admin/news/add": () => {
         print(AddNewsPage.render());
