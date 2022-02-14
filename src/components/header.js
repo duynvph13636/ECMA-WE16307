@@ -1,42 +1,41 @@
 const Header = {
     render() {
-        return /* html */ `<div class="max-w-5xl mx-auto">
+        return /* html */ `
         <header>
-        <div class="bg-blue-900 py-4">
-          <a href="">
-            <img src="https://picsum.photos/150/50" alt="" class="mx-auto" />
-          </a>
-        </div>
-        <nav class="bg-orange-600">
+        <div class="header-2">
+   
+           <nav class="bg-white py-2 md:py-4">
+             <div class="container px-4 mx-auto md:flex md:items-center">
          
-            <ul class="flex">
-            <li> <a href="/" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Trang chủ</a> </li>
-            <li> <a href="/about" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Chương trình đào tạo</a> </li>
-            <li> <a href="/product" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Góc sinh viên</a> </li>
-            <li> <a href="/" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Tuyển dụng</a> </li>
-            <li> <a href="/signup" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Sign up</a> </li>
-            <li> <a href="/signin" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Sign in</a> </li>
-            <li> <a href="/admin/dashboard" class="block px-4 py-3 hover:bg-blue-800 hover:text-white">Admin</a> </li>
-
+               <div class="flex justify-between items-center">
+                 <a href="#" class="font-bold text-xl text-indigo-600">FPT Polytechnic</a>
+                 <button class="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle">
+                   <i class="fas fa-bars"></i>
+                 </button>
+               </div>
+         
+               <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Trang chủ</a>
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Giỏ hàng</a>
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Sản phẩm</a>
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Liên hệ</a>
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Tin tức</a>
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Đăng nhập</a>
+                 <a href="#" class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Admin</a>
+               </div>
+             </div>
+           </nav>
+         
            
+              
            
-            <input type="text" placeholder="Tìm kiếm..." class="my-2" />
-            <input type="button" class="bg-blue-900 text-gray-100 my-2 ml-2" value="tìm kiếm" />
+         
+   </header>
+   <div class="mt-2 w-full m-auto">
+   <a href=""><img class="w-full" src="https://picsum.photos/3000/700" alt=""></a>
+</div>
         
-          
-             
-            </ul>
-           
- 
-        </nav>  
-       
-      </header>
-      <div class="py-2">
-      <img src="https://picsum.photos/1050/200" alt="">
-   </div>
-        
-        
-        </div>`;
+       `;
     },
 };
 export default Header;
