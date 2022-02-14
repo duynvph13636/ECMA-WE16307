@@ -1,9 +1,9 @@
-import data from "../../../data";
+import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
 
 const NewsEdit = {
-    render(id) {
-        const found = data.find((element) => element.id === id);
+    async  render() {
+        const { data } = await axios.get("https://5e79b4b817314d00161333da.mockapi.io/posts/15");
         return /* html */`
         <div class="min-h-full">
             ${NavAdmin.render()}
@@ -35,14 +35,14 @@ const NewsEdit = {
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div class="col-span-6">
                                     <label class="block text-sm font-medium text-gray-700">Tiêu đề</label>
-                                    <input type="text" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="${found.title}">
+                                    <input type="text" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="${data.title}">
                                 </div>
                                 <div>
                                     <label for="about" class="block text-sm font-medium text-gray-700">
                                     Nội dung
                                     </label>
                                     <div class="mt-1">
-                                        <textarea rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1">${found.desc}</textarea>
+                                        <textarea rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1">${data.desc}</textarea>
                                     </div>
                                 </div>
                                 <div>
