@@ -11,6 +11,7 @@ import Dashboard from "./page/admin/dashboard";
 import AdminNewsPage from "./page/admin/news";
 import AddNewsPage from "./page/admin/news/add";
 import NewsEdit from "./page/admin/news/edit";
+import ProductDetailPage from "./page/product/detail";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -29,6 +30,9 @@ router.on({
     },
     "/product": () => {
         print(Product);
+    },
+    "/product/:id": ({ data }) => {
+        print(ProductDetailPage, data.id);
     },
     "/news/:id": ({ data }) => {
         const { id } = data;
