@@ -20,20 +20,28 @@ const AddNewsPage = {
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div class="col-span-6">
-                                    <label class="block text-sm font-medium text-gray-700">Tiêu đề</label>
+                                    <label class="block text-sm font-medium text-gray-700">Tên sản phẩm</label>
                                     <input type="text" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                                 </div>
                                 <div>
                                     <label for="about" class="block text-sm font-medium text-gray-700">
-                                    Nội dung
+                                    Price
                                     </label>
                                     <div class="mt-1">
-                                        <textarea rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"></textarea>
+                                    <input type="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                                     </div>
                                 </div>
                                 <div>
+                                <label for="about" class="block text-sm font-medium text-gray-700">
+                                Price
+                                </label>
+                                <div class="mt-1">
+                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                                <div>
                                     <label class="block text-sm font-medium text-gray-700">
-                                    Hình ảnh
+                                    Ảnh sản phẩm
                                     </label>
                                     <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                     <div class="space-y-1 text-center">

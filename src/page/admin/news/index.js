@@ -35,6 +35,9 @@ const AdminNewsPage = {
                       <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                           <tr>
+                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          image
+                        </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Name
                             </th>
@@ -80,7 +83,7 @@ const AdminNewsPage = {
                           <td class="px-6 py-4">
                            
                             <span class="px-6 py-4 text-right text-sm font-medium">
-                            <a href="/admin/dashboard/edit/${post.id}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <button data-id="${post.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded">Edit</button>
                           </span>
                             <span class="px-6 py-4 text-right text-sm font-medium">
                             <button data-id="${post.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded">Delete</button>
@@ -88,11 +91,8 @@ const AdminNewsPage = {
                           </td>
                           <td class="px-6 py-4 text-sm text-gray-500">
                             Admin
-                          </td>
-                         
-                        </tr>
-              
-                        
+                          </td>                        
+                        </tr>                                    
                         `).join("")}
                        
                           <!-- More people... -->
@@ -101,29 +101,20 @@ const AdminNewsPage = {
                     </div>
                   </div>
                 </div>
-                </div>
-                
-                
+                </div>               
                 </div>
             </main>
         </div>
-
-
-        <!-- This example requires Tailwind CSS v2.0+ -->
-
-
-    
                     `;
     },
     afterRender() {
-        const bnts = document.querySelectorAll(".btn");
-        bnts.forEach((bnt) => {
-            const { id } = bnt.dataset;
-            bnt.addEventListener("click", () => {
-                const confirm = window.confirm("bạn có chắc muốn xóa không");
-
+        const btns = document.querySelectorAll(".btn");
+        btns.forEach((btn) => {
+            const a = btn.dataset.id;
+            btn.addEventListener("click", () => {
+                const confirm = window.confirm("bạn có chắc muốn xóa không?");
                 if (confirm) {
-                    axios.delete(`https://5e79b4b817314d00161333da.mockapi.io/posts/${id}`);
+                    axios.delete(`https://5e79b4b817314d00161333da.mockapi.io/posts/${a}`);
                 }
             });
         });

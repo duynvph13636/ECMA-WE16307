@@ -1,6 +1,6 @@
 import Navigo from "navigo";
 import HomPage from "./page/home";
-import Product from "./page/product";
+import productIndex from "./page/products";
 import AboutPage from "./page/about";
 // import Header from "./components/header";
 // import Footer from "./components/footer";
@@ -11,6 +11,7 @@ import Dashboard from "./page/admin/dashboard";
 import AdminNewsPage from "./page/admin/news";
 import AddNewsPage from "./page/admin/news/add";
 import NewsEdit from "./page/admin/news/edit";
+import productsDetail from "./page/products/details";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -27,8 +28,8 @@ router.on({
     "/about": () => {
         print(AboutPage);
     },
-    "/product": () => {
-        print(Product);
+    "/products": () => {
+        print(productIndex);
     },
     "/news/:id": ({ data }) => {
         const { id } = data;
@@ -51,6 +52,9 @@ router.on({
     },
     "/admin/dashboard/edit/:id": () => {
         print(NewsEdit);
+    },
+    "/products/details": () => {
+        print(productsDetail);
     },
 });
 router.resolve();

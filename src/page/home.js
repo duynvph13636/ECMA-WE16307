@@ -1,4 +1,4 @@
-import NewList from "../components/newList";
+import NewProducts from "../components/newProducts";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
@@ -10,7 +10,7 @@ const HomPage = {
         <div class="max-w-5xl mx-auto">
 
         <main> 
-       ${NewList.render()}
+       ${NewProducts.render()}
       </main>
         </div>
         ${Footer.render()}

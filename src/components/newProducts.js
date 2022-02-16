@@ -1,6 +1,6 @@
 import data from "../data";
 
-const NewList = {
+const NewProducts = {
     render() {
         return /* html */`
      
@@ -255,4 +255,4 @@ const NewList = {
         `;
     },
 };
-export default NewList;
+export default NewProducts;
