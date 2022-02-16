@@ -1,10 +1,12 @@
 import axios from "axios";
+import { getAll } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsPage = {
-    async  render() {
-        const response = await axios.get("https://5e79b4b817314d00161333da.mockapi.io/posts");
-        return /* html */`
+    async render() {
+        const { data } = await getAll();
+
+        return /* html */ `
         <div class="min-h-full">
             ${NavAdmin.render()}
             <header class="bg-white shadow">
@@ -42,7 +44,7 @@ const AdminNewsPage = {
                               Name
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                              Title
+                              Mô tả sản phẩm
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Status
@@ -57,33 +59,35 @@ const AdminNewsPage = {
                           </tr>
                         </thead>
                          <tbody class="bg-white divide-y divide-gray-200">
-                        ${response.data.map((post) => `
-                        
-                       
+                        ${data.map((post) => `
                         <tr>
                           <td class="px-6 py-4">
                             <div class="flex items-center">
                               <div class="flex-shrink-0 h-10 w-10">
-                                <img class="h-10 w-10 rounded-full" src="${post.img}" alt="">
+                                <img class="h-10 w-10 rounded-full" src="${post.image}" alt="">
                               </div>
                               <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">
-                                  ${post.title}
+                               
                                 </div>
                                 <div class="text-sm text-gray-500">
-                                 ${post.desc}
+                                
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td class="px-6 py-4">
-                            <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                            <div class="text-sm text-gray-500">Optimization</div>
+                            <div class="text-sm text-gray-900">  ${post.name} </div>
+                            
+                          </td>
+                          <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">  ${post.description} </div>
+                            
                           </td>
                           <td class="px-6 py-4">
                            
                             <span class="px-6 py-4 text-right text-sm font-medium">
-                            <button data-id="${post.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded">Edit</button>
+                            <button data-id="${post.id}" class="btne bg-red-500 text-white inline-block py-3 px-5 rounded"> <a href="/admin/news/${post.id}/edit">Edit</a></button>
                           </span>
                             <span class="px-6 py-4 text-right text-sm font-medium">
                             <button data-id="${post.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded">Delete</button>
@@ -114,7 +118,9 @@ const AdminNewsPage = {
             btn.addEventListener("click", () => {
                 const confirm = window.confirm("bạn có chắc muốn xóa không?");
                 if (confirm) {
-                    axios.delete(`https://5e79b4b817314d00161333da.mockapi.io/posts/${a}`);
+                    axios.delete(
+                        `https://5e79b4b817314d00161333da.mockapi.io/posts/${a}`,
+                    );
                 }
             });
         });

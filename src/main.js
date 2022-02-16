@@ -56,5 +56,11 @@ router.on({
     "/products/details": () => {
         print(productsDetail);
     },
+    "/admin/products": () => {
+        print(AdminNewsPage);
+    },
+    "/admin/news/:id/edit": () => {
+        print(NewsEdit);
+    },
 });
 router.resolve();
