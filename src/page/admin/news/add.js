@@ -1,4 +1,5 @@
 import axios from "axios";
+import { add } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AddNewsPage = {
@@ -83,7 +84,7 @@ const AddNewsPage = {
                 },
             });
             console.log(data.url);
-            axios.post("https://5e79b4b817314d00161333da.mockapi.io/posts", {
+            add({
                 name: document.querySelector("#name_product").value,
                 price: document.querySelector("#price_product").value,
                 description: document.querySelector("#description_product").value,
