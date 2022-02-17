@@ -1,29 +1,24 @@
 {
-    "posts": [
-        {
-          "createdAt": "2022-02-09T20:43:32.682Z",
-          "name": "ggggggggggg",
-          "image": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
-          "description": "ahihihihi",
-          "id": "23"
-        },
-      
-        {
-          "createdAt": "2022-02-09T20:43:32.682Z",
-          "name": "ggggggggggg",
-          "image": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
-          "description": "ahihihihi",
-          "id": "23"
-        },
-      
-        {
-          "createdAt": "2022-02-09T20:43:32.682Z",
-          "name": "ggggggggggg",
-          "image": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
-          "description": "ahihihihi",
-          "id": "23"
-        }
-      
-      ],
-      "user":[]
+  "posts": [
+    {
+      "id": "23"
+    },
+    {
+      "id": "24",
+      "name": "dvvvvvvvv",
+      "price": "4555555",
+      "description": "dvvvvv",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645114900/nc96f1iqcmlbkqlluef6.jpg"
+    },
+    {
+      "createdAt": "2022-02-09T20:43:32.682Z",
+      "name": "ggggggggggg",
+      "image": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
+      "description": "ahihihihi",
+      "id": "25"
     }
+  ],
+  "user": [],
+  "products":[],
+  "category":[]
+}

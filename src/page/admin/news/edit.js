@@ -1,9 +1,10 @@
 import axios from "axios";
+import { edit, get } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const NewsEdit = {
-    async  render() {
-        const { data } = await axios.get(`https://5e79b4b817314d00161333da.mockapi.io/posts/27`);
+    async  render(id) {
+        const { data } = await get(id);
 
         return /* html */`
         <div class="min-h-full">
@@ -77,7 +78,7 @@ const NewsEdit = {
     </main>
 `;
     },
-    afterRender() {
+    afterRender(id) {
         const formEdit = document.querySelector("#formEdit");
         const CLOUDINARY_PRESET = "ck8bz8wq";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
@@ -94,7 +95,8 @@ const NewsEdit = {
                 },
             });
             console.log(data.url);
-            axios.put("https://5e79b4b817314d00161333da.mockapi.io/posts/27", {
+            edit({
+                id,
                 name: document.querySelector("#name_product").value,
                 price: document.querySelector("#price_product").value,
                 description: document.querySelector("#description_product").value,

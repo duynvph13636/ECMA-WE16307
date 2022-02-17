@@ -1,5 +1,3 @@
-import data from "../data";
-
 const NewProducts = {
     render() {
         return /* html */`

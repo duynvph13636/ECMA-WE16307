@@ -14,5 +14,9 @@ export const add = (post) => {
 };
 export const edit = (post) => {
     const url = `/posts/${post.id}`;
-    return instance.put(url);
+    return instance.put(url, post);
+};
+export const get = (id) => {
+    const url = `/posts/${id}`;
+    return instance.get(url);
 };
