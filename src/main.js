@@ -14,6 +14,7 @@ import productsDetail from "./page/admin/products/details";
 import addProduct from "./page/admin/products/add";
 import AdminNewsProduct from "./page/admin/products";
 import productEdit from "./page/admin/products/edit";
+import productsDetailpost from "./page/client/productDetail";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -77,6 +78,9 @@ router.on({
     },
     "/admin/product/:id/edit": ({ data }) => {
         print(productEdit, data.id);
+    },
+    "/products/:id/detail": ({ data }) => {
+        print(productsDetailpost, data.id);
     },
     "/admin/products/add": () => {
         print(addProduct);
