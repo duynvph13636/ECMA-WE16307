@@ -1,6 +1,5 @@
 import Navigo from "navigo";
 import HomPage from "./page/home";
-import productIndex from "./page/admin/products";
 import AboutPage from "./page/about";
 // import Header from "./components/header";
 // import Footer from "./components/footer";
@@ -12,6 +11,9 @@ import AdminNewsPage from "./page/admin/news";
 import AddNewsPage from "./page/admin/news/add";
 import NewsEdit from "./page/admin/news/edit";
 import productsDetail from "./page/admin/products/details";
+import addProduct from "./page/admin/products/add";
+import AdminNewsProduct from "./page/admin/products";
+import productEdit from "./page/admin/products/edit";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -20,7 +22,18 @@ const print = async (content, id) => {
     if (content.afterRender) await content.afterRender(id);
     // document.getElementById("footer").innerHTML = Footer.render();
 };
-
+router.on("/admin/*", () => {}, {
+    before: (done) => {
+        if (localStorage.getItem("user")) {
+            const userId = JSON.parse(localStorage.getItem("user")).id;
+            if (userId === 1) {
+                done();
+            } else {
+                document.location.href = "/";
+            }
+        }
+    },
+});
 router.on({
     "/": () => {
         print(HomPage);
@@ -29,7 +42,7 @@ router.on({
         print(AboutPage);
     },
     "/products": () => {
-        print(productIndex);
+        print();
     },
     "/news/:id": ({ data }) => {
         const { id } = data;
@@ -57,10 +70,17 @@ router.on({
         print(productsDetail);
     },
     "/admin/products": () => {
-        print(AdminNewsPage);
+        print(AdminNewsProduct);
     },
     "/admin/news/:id/edit": ({ data }) => {
         print(NewsEdit, data.id);
     },
+    "/admin/product/:id/edit": ({ data }) => {
+        print(productEdit, data.id);
+    },
+    "/admin/products/add": () => {
+        print(addProduct);
+    },
+
 });
 router.resolve();

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { getAll } from "../../../api/post";
+import { getAll, remove } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsPage = {
@@ -118,10 +117,9 @@ const AdminNewsPage = {
             btn.addEventListener("click", () => {
                 const confirm = window.confirm("bạn có chắc muốn xóa không?");
                 if (confirm) {
-                    axios.delete(
-                        `https://5e79b4b817314d00161333da.mockapi.io/posts/${a}`,
-                    );
+                    remove(a);
                 }
+                document.location.href = "/admin/products";
             });
         });
     },

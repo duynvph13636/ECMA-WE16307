@@ -6,7 +6,7 @@ export const getAll = () => {
 };
 export const remove = (id) => {
     const url = `/posts/${id}`;
-    return instance.delete(url);
+    return instance.delete(url, id);
 };
 export const add = (post) => {
     const url = `/posts`;

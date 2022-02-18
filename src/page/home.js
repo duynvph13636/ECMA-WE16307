@@ -3,18 +3,23 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 const HomPage = {
-    render() {
+    async  render() {
         return /* html */ `
-        
-        ${Header.render()}
+        <div id="header">
+         ${Header.render()}
+        </div>
+       
         <div class="max-w-5xl mx-auto">
 
         <main> 
-       ${NewProducts.render()}
+       ${await NewProducts.render()}
       </main>
         </div>
         ${Footer.render()}
         `;
+    },
+    afterRender() {
+        Header.afterRender();
     },
 };
 export default HomPage;

@@ -1,4 +1,6 @@
+import toastr from "toastr";
 import { signup } from "../api/user";
+import "toastr/build/toastr.min.css";
 
 const Signup = {
     render() {
@@ -12,7 +14,7 @@ const Signup = {
             </h2>
            
           </div>
-          <form class="mt-8 space-y-6" action="#" method="POST" id="formSignup">
+          <form class="mt-8 space-y-6" action="#" id="formSignup">
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
               <div>
@@ -49,11 +51,22 @@ const Signup = {
         const formSignup = document.querySelector("#formSignup");
         formSignup.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const { data } = await signup({
-                email: document.querySelector("#email").value,
-                password: document.querySelector("#password").value,
-            });
-            console.log(data);
+            try {
+                const { data } = await signup({
+                    email: document.querySelector("#email").value,
+                    password: document.querySelector("#password").value,
+                });
+                if (data) {
+                    toastr.success("Bạn đăng ký thành công , Chuyển trang sau 2s");
+                    setTimeout(() => {
+                        document.location.href = "/signin";
+                    }, 2000);
+                }
+                console.log(data);
+            } catch (error) {
+                toastr.error("Đăng ký thất bại");
+                console.log(error.response.data);
+            }
         });
     },
 };

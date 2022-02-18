@@ -1,24 +1,62 @@
 {
   "posts": [
     {
-      "id": "23"
-    },
-    {
-      "id": "24",
-      "name": "dvvvvvvvv",
-      "price": "4555555",
-      "description": "dvvvvv",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645114900/nc96f1iqcmlbkqlluef6.jpg"
-    },
-    {
       "createdAt": "2022-02-09T20:43:32.682Z",
       "name": "ggggggggggg",
       "image": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
       "description": "ahihihihi",
       "id": "25"
+    },
+    {
+      "name": "iphone 20",
+      "price": "200000",
+      "description": "ddpej",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645167534/uhbe5o1kgpvgu5c4th10.jpg",
+      "id": "ad9b6zd"
+    },
+    {
+      "name": "iphone 20",
+      "price": "20000",
+      "description": "đpej lắm",
+      "quantity": "5",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645169566/y1wnxzmofxjiwjtnrzao.jpg",
+      "id": "yoKWtce"
+    },
+    {
+      "name": "iphone 20",
+      "price": "20000",
+      "description": "đpej lắm",
+      "quantity": "5",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645169575/cddt5jecynmopouvqwks.jpg",
+      "id": "7EgNVyi"
     }
   ],
-  "user": [],
-  "products":[],
-  "category":[]
+  "users": [
+    {
+      "email": "nvduy123@gmail.com",
+      "password": "$2a$10$6YVqhP/luiorO7bwVjrQ1eYJ7aIFnrFedAflGKetkt.3FXe4SBe0.",
+      "id": 1
+    },
+    {
+      "email": "nvduy.10a4kx2002@gmail.com",
+      "password": "$2a$10$Lb0mYGdRnXY3nJeqGFmQPuFkgW0ccqJUUgB8W4FtPlt.W.ifdiCNu",
+      "id": 2
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$3P1bgiP73gye8XetnKqRVuze/k0/b8R7PzW0mJLQhQEa445F5fbdm",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "id": 2,
+      "name": "oppo",
+      "price": "700000",
+      "description": "mccvd",
+      "quantity": "10",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645170671/cxrkcrfetvx3afv3w7sn.jpg"
+    }
+  ],
+  "category": []
 }

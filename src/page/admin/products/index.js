@@ -1,200 +1,135 @@
-import Header from "../../../components/header";
-import Footer from "../../../components/footer";
+import { getAll, remove } from "../../../api/products";
+import NavAdmin from "../../../components/NavAdmin";
 
-const productIndex = {
-    render() {
-        return /* html */`
-        ${Header.render()}
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-          <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Tất cả sản phẩm</h1>
-  
-          <div class="flex items-center">
-            <div class="relative inline-block text-left">
-             
-  
-             
-            </div>
-  
-           
-            
-          </div>
+const AdminNewsProduct = {
+    async render() {
+        const { data } = await getAll();
+
+        return /* html */ `
+        <div class="min-h-full">
+            ${NavAdmin.render()}
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="lg:flex lg:items-center lg:justify-between">
+                        <div class="flex-1 min-w-0">
+                        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+                            Quản lý sản phẩm
+                        </h2>
+                        </div>
+                        <div class="mt-5 flex lg:mt-0 lg:ml-4">
+                        <a href="/admin/products/add" class="sm:ml-3">
+                            <button type="button"
+                            class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Thêm mới
+                            </button>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col">
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
+                  <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                      <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                          <tr>
+                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          image
+                        </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Name
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Mô tả sản phẩm
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Số lượng sản phẩm
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Giá sản phẩm
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Status
+                            </th>
+                           
+                           
+                          </tr>
+                        </thead>
+                         <tbody class="bg-white divide-y divide-gray-200">
+                        ${data.map((post) => `
+                        <tr>
+                          <td class="px-6 py-4">
+                            <div class="flex items-center">
+                              <div class="flex-shrink-0 h-10 w-10">
+                                <img class="h-10 w-10 rounded-full" src="${post.image}" alt="">
+                              </div>
+                              <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">
+                               
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">  ${post.name} </div>
+                            
+                          </td>
+                          <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">  ${post.description} </div>
+                            
+                          </td>
+                          <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">  ${post.quantity} </div>
+                            
+                          </td>
+                          <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">  ${post.price} </div>
+                            
+                          </td>
+                          <td class="px-6 py-4">
+                           
+                            <span class="px-6 py-4 text-right text-sm font-medium">
+                            <button data-id="${post.id}" class="btne bg-red-500 text-white inline-block py-3 px-5 rounded"> <a href="/admin/product/${post.id}/edit">Edit</a></button>
+                          </span>
+                            <span class="px-6 py-4 text-right text-sm font-medium">
+                            <button data-id="${post.id}" class="btn bg-red-500 text-white inline-block py-3 px-5 rounded">Delete</button>
+                          </span>
+                          </td>
+                                           
+                        </tr>                                    
+                        `).join("")}
+                       
+                          <!-- More people... -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                </div>               
+                </div>
+            </main>
         </div>
-  
-        <section aria-labelledby="products-heading" class="pt-6 pb-24">
-        
-  
-          <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
-            <!-- Filters -->
-            <form class="hidden lg:block">
-              <h3 class="sr-only">Danh mục sản phẩm</h3>
-              <ul role="list" class="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
-                <li>
-                  <a href="#">
-                    Iphone
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#">
-                    Samsung
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#">
-                    Xiaomi
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#">
-                    Oppo
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#">
-                 Nokia
-                  </a>
-                </li>
-              </ul>
-  
-            
-  
-           
-             
-            </form>
-  
-            <!-- Product grid -->
-            <div class="lg:col-span-3">
-              <!-- Replace with your content -->
-              <div class="rounded-lg h-96 lg:h-full">
-                <div class="bg-white">
-                  <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                   
-                
-                    <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh1.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                          Iphone
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $48
-                        </p>
-                      </a>
-                
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh2.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                         Samsung 
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $35
-                        </p>
-                      </a>
-                
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh2.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                         oppo
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $89
-                        </p>
-                      </a>
-                
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh1.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                          iphone
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $35
-                        </p>
-                      </a>
-                
-                      <!-- More products... -->
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-white">
-                  <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                   
-                
-                    <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh1.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                          Iphone
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $48
-                        </p>
-                      </a>
-                
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh2.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                         Samsung 
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $35
-                        </p>
-                      </a>
-                
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh2.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                         oppo
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $89
-                        </p>
-                      </a>
-                
-                      <a href="#" class="group">
-                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                          <img src="image/anh1.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">
-                          iphone
-                        </h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">
-                          $35
-                        </p>
-                      </a>
-                
-                      <!-- More products... -->
-                    </div>
-                  </div>
-                </div>
-
-              
-              </div>
-              <!-- /End replace -->
-            </div>
-          </div>
-        </section>
-      </main>
-        ${Footer.render()}
-        
-        `;
+                    `;
+    },
+    afterRender() {
+        const btns = document.querySelectorAll(".btn");
+        btns.forEach((btn) => {
+            const a = btn.dataset.id;
+            btn.addEventListener("click", () => {
+                const confirm = window.confirm("bạn có chắc muốn xóa không?");
+                if (confirm) {
+                    remove(a);
+                }
+                document.location.href = "/admin/products";
+            });
+        });
     },
 };
-export default productIndex;
+
+export default AdminNewsProduct;
