@@ -15,6 +15,7 @@ import addProduct from "./page/admin/products/add";
 import AdminNewsProduct from "./page/admin/products";
 import productEdit from "./page/admin/products/edit";
 import productsDetailpost from "./page/client/productDetail";
+import cartPgae from "./page/client/cart";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -84,6 +85,9 @@ router.on({
     },
     "/admin/products/add": () => {
         print(addProduct);
+    },
+    "/cart": () => {
+        print(cartPgae);
     },
 
 });

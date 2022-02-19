@@ -118,8 +118,9 @@ const productsDetailpost = {
             console.log(12);
             const { data } = await get(a);
             console.log(data);
-            addToCart({ ...data, quantity: inputNumber || 1 });
-            toastr.success("thêm sản phẩm thành công.");
+            addToCart({ ...data, quantity: inputNumber || 1 }, () => {
+                toastr.success(`thêm sản phẩm ${data.name} vào giỏ hàng thành công.`);
+            });
         });
     },
 };
