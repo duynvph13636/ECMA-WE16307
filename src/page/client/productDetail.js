@@ -1,7 +1,9 @@
+import toastr from "toastr";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { get } from "../../api/products";
 import { addToCart } from "../../utils/cart";
+import "toastr/build/toastr.min.css";
 
 const productsDetailpost = {
 
@@ -117,6 +119,7 @@ const productsDetailpost = {
             const { data } = await get(a);
             console.log(data);
             addToCart({ ...data, quantity: inputNumber || 1 });
+            toastr.success("thêm sản phẩm thành công.");
         });
     },
 };
