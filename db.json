@@ -56,7 +56,65 @@
       "description": "mccvd",
       "quantity": "10",
       "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645170671/cxrkcrfetvx3afv3w7sn.jpg"
+    },
+    {
+      "name": "iphone 20",
+      "price": "40000000",
+      "description": "ddpej",
+      "quantity": "5",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645282082/cnjcic2uwdkompuwxv3l.jpg",
+      "id": 3
+    },
+    {
+      "name": "iphone 22",
+      "price": "500000",
+      "description": "iol",
+      "quantity": "8",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645282128/mujurjtkcspzqxetu2cq.jpg",
+      "id": 4
+    },
+    {
+      "name": "iphone 15",
+      "price": "500000",
+      "description": "lop",
+      "quantity": "7",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645282170/q6zsx4bdvrclkslwb2mt.jpg",
+      "id": 5
+    },
+    {
+      "name": "fvvv",
+      "price": "2000000",
+      "description": "fbbb",
+      "quantity": "5",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645287092/ajvv7e4kcztlndzwycsy.jpg",
+      "id": 6
+    },
+    {
+      "cateId": "1",
+      "name": "dvdvv",
+      "price": "34444444",
+      "description": "dffvv",
+      "quantity": "34",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645287171/wckpkc2p08vwilk18jan.jpg",
+      "id": 7
     }
   ],
-  "category": []
+  "categories": [
+    {
+      "name": "iphone",
+      "id": 1
+    },
+    {
+      "name": "samsung",
+      "id": 2
+    },
+    {
+      "name": "",
+      "id": 3
+    },
+    {
+      "name": "oppo",
+      "id": 4
+    }
+  ]
 }

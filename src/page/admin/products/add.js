@@ -1,9 +1,12 @@
 import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
 import { add } from "../../../api/products";
+import { getAll } from "../../../api/category";
 
 const addProduct = {
-    render() {
+
+    async  render() {
+        const { data } = await getAll();
         return /* html */`
         <div class="min-h-full">
         ${NavAdmin.render()}
@@ -21,6 +24,18 @@ const addProduct = {
                 <form id="formAdd">
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                        <div class="col-span-6">
+                        <label class="block text-sm font-medium text-gray-700">Tên danh mục</label>
+                       
+                        <select name="" id="idCategory" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md pl-[10px]">
+                        ${data.map((post) => `
+                         <option value="${post.id}">${post.name}</option>
+                        
+                        
+                        `).join("")}
+                       
+                      </select>
+                    </div>
                             <div class="col-span-6">
                                 <label class="block text-sm font-medium text-gray-700">Tên sản phẩm</label>
                                 <input type="text" id="name_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
@@ -92,6 +107,7 @@ const addProduct = {
             console.log(data.url);
 
             add({
+                cateId: document.querySelector("#idCategory").value,
                 name: document.querySelector("#name_product").value,
                 price: document.querySelector("#price_product").value,
                 description: document.querySelector("#description_product").value,
@@ -99,7 +115,7 @@ const addProduct = {
                 image: data.url,
 
             });
-            document.location.href = "/admin/products/add";
+            // document.location.href = "/admin/products/add";
         });
     },
 };

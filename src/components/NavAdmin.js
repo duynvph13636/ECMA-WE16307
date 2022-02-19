@@ -19,6 +19,9 @@ const NavAdmin = {
                   <a href="/admin/products"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
   
+                  <a href="/admin/category/detail"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">category</a>
+  
                   <a href="/admin/orders"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Order</a>
   

@@ -16,6 +16,8 @@ import AdminNewsProduct from "./page/admin/products";
 import productEdit from "./page/admin/products/edit";
 import productsDetailpost from "./page/client/productDetail";
 import cartPgae from "./page/client/cart";
+import AddCategory from "./page/admin/category/add";
+import AdminNewsCategory from "./page/admin/category";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -88,6 +90,12 @@ router.on({
     },
     "/cart": () => {
         print(cartPgae);
+    },
+    "/admin/add/category": () => {
+        print(AddCategory);
+    },
+    "/admin/category/detail": () => {
+        print(AdminNewsCategory);
     },
 
 });

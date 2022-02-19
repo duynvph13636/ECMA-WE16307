@@ -12,6 +12,9 @@ export const addToCart = (newProduct, next) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log(cart);
+    // const tong = exitsProduct.map(item, () => {
+
+    // });
     next();
 };
 export const increaseQuantity = (id) => {
