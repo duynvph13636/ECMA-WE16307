@@ -1,10 +1,10 @@
 // import { getAll, remove } from "../../../api/post";
-import { getAll, remove } from "../../../api/category";
+import { getAllCate, remove } from "../../../api/category";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsCategory = {
     async render() {
-        const { data } = await getAll();
+        const { data } = await getAllCate();
 
         return /* html */ `
         <div class="min-h-full">

@@ -1,6 +1,6 @@
 import instance from "./config";
 
-export const getAll = () => {
+export const getAllProducts = () => {
     const url = "/products";
     return instance.get(url);
 };
@@ -18,5 +18,9 @@ export const edit = (post) => {
 };
 export const get = (id) => {
     const url = `/products/${id}`;
+    return instance.get(url);
+};
+export const getProduct = (id) => {
+    const url = `/catePosts/${id}?_embed=products`;
     return instance.get(url);
 };

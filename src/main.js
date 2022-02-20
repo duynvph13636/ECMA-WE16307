@@ -18,6 +18,7 @@ import productsDetailpost from "./page/client/productDetail";
 import cartPgae from "./page/client/cart";
 import AddCategory from "./page/admin/category/add";
 import AdminNewsCategory from "./page/admin/category";
+import productAll from "./page/client/products";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -96,6 +97,12 @@ router.on({
     },
     "/admin/category/detail": () => {
         print(AdminNewsCategory);
+    },
+    "/products/all": () => {
+        print(productAll);
+    },
+    "/catePosts/:id*": ({ data }) => {
+        print(productAll, data.id);
     },
 
 });

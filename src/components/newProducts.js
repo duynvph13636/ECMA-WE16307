@@ -1,8 +1,8 @@
-import { getAll } from "../api/products";
+import { getAllProducts } from "../api/products";
 
 const NewProducts = {
     async  render() {
-        const response = await getAll();
+        const response = await getAllProducts();
 
         return /* html */`
    

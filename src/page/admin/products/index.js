@@ -1,9 +1,9 @@
-import { getAll, remove } from "../../../api/products";
+import { getAllProducts, remove } from "../../../api/products";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsProduct = {
     async render() {
-        const { data } = await getAll();
+        const { data } = await getAllProducts();
 
         return /* html */ `
         <div class="min-h-full">

@@ -1,12 +1,12 @@
 import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
 import { add } from "../../../api/products";
-import { getAll } from "../../../api/category";
+import { getAllCate } from "../../../api/category";
 
 const addProduct = {
 
     async  render() {
-        const { data } = await getAll();
+        const { data } = await getAllCate();
         return /* html */`
         <div class="min-h-full">
         ${NavAdmin.render()}
@@ -107,7 +107,7 @@ const addProduct = {
             console.log(data.url);
 
             add({
-                cateId: document.querySelector("#idCategory").value,
+                catePostId: document.querySelector("#idCategory").value,
                 name: document.querySelector("#name_product").value,
                 price: document.querySelector("#price_product").value,
                 description: document.querySelector("#description_product").value,

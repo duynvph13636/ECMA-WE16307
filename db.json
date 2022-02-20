@@ -90,19 +90,37 @@
       "id": 6
     },
     {
-      "cateId": "1",
+      "catePostId": "1",
       "name": "dvdvv",
       "price": "34444444",
       "description": "dffvv",
       "quantity": "34",
       "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645287171/wckpkc2p08vwilk18jan.jpg",
       "id": 7
+    },
+    {
+      "catePostId": "1",
+      "name": "iphone 20",
+      "price": "556",
+      "description": "gn",
+      "quantity": "6",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645343839/db0pvewxqosos7qyibaz.jpg",
+      "id": 8
+    },
+    {
+      "catePostId": "1",
+      "name": "iphone 13",
+      "price": "45555",
+      "description": "gb",
+      "quantity": "5",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645343875/lklgfhezycru3nbkjnkw.jpg",
+      "id": 9
     }
   ],
-  "categories": [
+  "catePosts": [
     {
       "name": "iphone",
-      "id": 1
+      "id": "1"
     },
     {
       "name": "samsung",
