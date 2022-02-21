@@ -4,6 +4,7 @@ import { decreaseQuantity, increaseQuantity, removeItemCart } from "../../utils/
 const cartPgae = {
     render() {
         let cart = [];
+
         if (localStorage.getItem("cart")) {
             cart = JSON.parse(localStorage.getItem("cart"));
         }
@@ -63,6 +64,7 @@ const cartPgae = {
                     </thead>
                      <tbody class="bg-white divide-y divide-gray-200">
                     ${cart.map((post) => `
+                   
                     <tr>
                       <td class="px-6 py-4">
                         <div class="flex items-center">
@@ -110,6 +112,7 @@ const cartPgae = {
                    
                       <!-- More people... -->
                     </tbody>
+                   
                   </table>
                 </div>
               </div>
