@@ -90,7 +90,7 @@ const AdminNewsProduct = {
                             
                           </td>
                           <td class="px-6 py-4">
-                            <div class="text-sm text-gray-900">  ${post.price} </div>
+                            <div class="text-sm text-gray-900">  ${post.price.toLocaleString("vi-VN", { style: "currency", currency: "VND" })} </div>
                             
                           </td>
                           <td class="px-6 py-4">

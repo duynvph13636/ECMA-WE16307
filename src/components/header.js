@@ -2,6 +2,8 @@ import toastr from "toastr";
 import { reRender } from "../utils";
 import "toastr/build/toastr.min.css";
 
+// import Swiper styles
+
 const Header = {
 
     render() {
@@ -50,9 +52,7 @@ const Header = {
              </div>
            </nav>
    
-   <div class="mt-2 w-full m-auto">
-   <a href=""><img class="w-full" src="https://picsum.photos/3000/700" alt=""></a>
-</div>
+  
        `;
     },
 

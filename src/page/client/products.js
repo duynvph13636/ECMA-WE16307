@@ -90,7 +90,7 @@ const productAll = {
                    
                     ${a.map((icon) => `
                     
-                    <a href="#" class="group">
+                    <a href="/products/${icon.id}/detail" class="group">
                         <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                           <img src="${icon.image}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-[200px] h-[250px] object-center object-cover group-hover:opacity-75">
                         </div>
@@ -98,7 +98,7 @@ const productAll = {
                       ${icon.name}
                         </h3>
                         <p class="mt-1 text-lg font-medium text-gray-900">
-                      ${icon.price}
+                      ${icon.price.toLocaleString("vi-VN", { style: "currency", currency: "VND" })}
                         </p>
                       </a>
                     
