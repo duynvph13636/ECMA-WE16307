@@ -1,4 +1,5 @@
 // import { getAll, remove } from "../../../api/post";
+import toastr from "toastr";
 import { getAllCate, remove } from "../../../api/category";
 import NavAdmin from "../../../components/NavAdmin";
 
@@ -92,7 +93,10 @@ const AdminNewsCategory = {
                 if (confirm) {
                     remove(a);
                 }
-                document.location.href = "/admin/products";
+                toastr.success("Bạn xóa thành công");
+                setTimeout(() => {
+                    document.location.href = "/admin/category/detail";
+                }, 2000);
             });
         });
     },

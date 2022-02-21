@@ -36,16 +36,6 @@
       "email": "nvduy123@gmail.com",
       "password": "$2a$10$6YVqhP/luiorO7bwVjrQ1eYJ7aIFnrFedAflGKetkt.3FXe4SBe0.",
       "id": 1
-    },
-    {
-      "email": "nvduy.10a4kx2002@gmail.com",
-      "password": "$2a$10$Lb0mYGdRnXY3nJeqGFmQPuFkgW0ccqJUUgB8W4FtPlt.W.ifdiCNu",
-      "id": 2
-    },
-    {
-      "email": "abc@gmail.com",
-      "password": "$2a$10$3P1bgiP73gye8XetnKqRVuze/k0/b8R7PzW0mJLQhQEa445F5fbdm",
-      "id": 3
     }
   ],
   "products": [
@@ -99,10 +89,6 @@
     {
       "name": "samsung",
       "id": 2
-    },
-    {
-      "name": "",
-      "id": 3
     },
     {
       "name": "oppo",

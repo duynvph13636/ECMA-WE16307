@@ -17,7 +17,7 @@ const Header = {
                </div>
                <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
                  <a href="/" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Trang chủ</a>
-                 <a href="/cart" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Giỏ hàng</a>
+                 <a href="/cart" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300"> <i class="fas fa-shopping-cart text-[35px] mr-[10px]"></i>Giỏ hàng</a>
                  <a href="/products/all" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Sản phẩm</a>
                  <a href="#" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Liên hệ</a>
                  <a href="#" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Tin tức</a>

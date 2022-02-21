@@ -1,7 +1,7 @@
 import axios from "axios";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import $ from "jquery";
-import validate from "jquery-validation";
+import jqueryValidate from "jquery-validation";
 import NavAdmin from "../../../components/NavAdmin";
 import { add } from "../../../api/products";
 import { getAllCate } from "../../../api/category";
@@ -95,96 +95,96 @@ const addProduct = {
     afterRender() {
         const formAdd = $("#formAdd");
         // eslint-disable-next-line camelcase
-        const img_preview = document.querySelector("#img-preview");
+        // const img_preview = document.querySelector("#img-preview");
         // eslint-disable-next-line camelcase
-        const img_post = document.querySelector("#file-upload");
-        let imgLink = "";
+        // const img_post = document.querySelector("#file-upload");
 
-        const CLOUDINARY_PRESET = "ck8bz8wq";
-        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
-
-        // eslint-disable-next-line camelcase
-        img_post.addEventListener("change", (e) => {
-            // eslint-disable-next-line camelcase
-            img_preview.src = URL.createObjectURL(e.target.files[0]);
-        });
+        // const CLOUDINARY_PRESET = "ck8bz8wq";
+        // const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
 
         formAdd.validate({
             rules: {
-                name_product: {
+                "name_product": {
                     require: true,
                     minlength: 20,
                 },
-                price_product: {
+                "price_product": {
                     require: true,
                     digits: true,
                 },
-                soluong_product: {
+                "soluong_product": {
                     require: true,
                     digits: true,
                 },
-                description_product: {
+                "description_product": {
                     require: true,
                     minlength: 10,
                     maxlength: 50,
                 },
-                file_upload: {
+                "file_upload": {
                     require: true,
 
                 },
             },
             messages: {
-                name_product: {
+                "name_product": {
                     require: "Không được bỏ trống trường này",
                     minlength: "Ít nhất phải 20 ký tự",
                 },
-                price_product: {
+                "price_product": {
                     require: "Không được bỏ trống trường này",
                     digits: "Phải nhập ký tự là số",
                 },
-                soluong_product: {
+                "soluong_product": {
                     require: "Không được bỏ trống trường này",
                     digits: "Phải nhập ký tự là số",
                 },
-                description_product: {
+                "description_product": {
                     require: "Không được bỏ trống trường này",
                     minlength: "Ít nhất phải 10 ký tự",
                     maxlength: "Ít nhất phải 50 ký tự",
 
                 },
-                file_upload: {
+                "file_upload": {
                     require: "Không được bỏ trống trường này",
 
                 },
             },
             submitHandler: () => {
-                async function handleAddProduct() {
-                    const file = document.querySelector("#file-upload").files[0];
-                    if (file) {
-                        const formData = new FormData();
-                        formData.append("file", file);
-                        formData.append("upload_preset", CLOUDINARY_PRESET);
-                        // call api cloudinary , để upload ảnh
-                        const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                            headers: {
-                                "Content-Type": "application/form-data",
-                            },
-                        });
-                        imgLink = data.url;
-                        console.log(data.url);
-                    }
+                console.log("kihbbb");
+                // async function handleAddProduct() {
+                //     let imgLink = "";
+                //     // eslint-disable-next-line camelcase
+                //     img_post.addEventListener("change", (e) => {
+                //         // eslint-disable-next-line camelcase
+                //         img_preview.src = URL.createObjectURL(e.target.files[0]);
+                //     });
+                //     const file = document.querySelector("#file-upload").files[0];
+                //     if (file) {
+                //         const formData = new FormData();
+                //         formData.append("file", file);
+                //         formData.append("upload_preset", CLOUDINARY_PRESET);
+                //         // call api cloudinary , để upload ảnh
+                //         const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                //             headers: {
+                //                 "Content-Type": "application/form-data",
+                //             },
+                //         });
+                //         imgLink = data.url;
+                //         console.log(data.url);
+                //     }
 
-                    add({
-                        catePostId: document.querySelector("#idCategory").value,
-                        name: document.querySelector("#name_product").value,
-                        price: document.querySelector("#price_product").value,
-                        description: document.querySelector("#description_product").value,
-                        quantity: document.querySelector("#soluong_product").value,
-                        image: imgLink || "",
+                //     add({
+                //         catePostId: document.querySelector("#idCategory").value,
+                //         name: document.querySelector("#name_product").value,
+                //         price: document.querySelector("#price_product").value,
+                //         description: document.querySelector("#description_product").value,
+                //         quantity: document.querySelector("#soluong_product").value,
+                //         image: imgLink || "",
 
-                    });
-                }
-                handleAddProduct();
+                //     });
+                // }
+                // handleAddProduct();
             },
         });
     },
