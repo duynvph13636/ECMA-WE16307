@@ -1,3 +1,4 @@
+import toastr from "toastr";
 import { getAllProducts, remove } from "../../../api/products";
 import NavAdmin from "../../../components/NavAdmin";
 
@@ -125,8 +126,11 @@ const AdminNewsProduct = {
                 const confirm = window.confirm("bạn có chắc muốn xóa không?");
                 if (confirm) {
                     remove(a);
+                    toastr.success("bạn xóa thành công");
+                    setTimeout(() => {
+                        document.location.href = "/admin/products";
+                    }, 2000);
                 }
-                document.location.href = "/admin/products";
             });
         });
     },

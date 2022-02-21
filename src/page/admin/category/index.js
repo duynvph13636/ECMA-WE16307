@@ -92,11 +92,11 @@ const AdminNewsCategory = {
                 const confirm = window.confirm("bạn có chắc muốn xóa không?");
                 if (confirm) {
                     remove(a);
+                    toastr.success("Bạn xóa thành công");
+                    setTimeout(() => {
+                        document.location.href = "/admin/category/detail";
+                    }, 2000);
                 }
-                toastr.success("Bạn xóa thành công");
-                setTimeout(() => {
-                    document.location.href = "/admin/category/detail";
-                }, 2000);
             });
         });
     },

@@ -1,20 +1,6 @@
 {
   "posts": [
     {
-      "createdAt": "2022-02-09T20:43:32.682Z",
-      "name": "ggggggggggg",
-      "image": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
-      "description": "ahihihihi",
-      "id": "25"
-    },
-    {
-      "name": "iphone 20",
-      "price": "200000",
-      "description": "ddpej",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645167534/uhbe5o1kgpvgu5c4th10.jpg",
-      "id": "ad9b6zd"
-    },
-    {
       "name": "iphone 20",
       "price": "20000",
       "description": "đpej lắm",
@@ -40,51 +26,46 @@
   ],
   "products": [
     {
-      "name": "iphone 20",
-      "price": "40000000",
-      "description": "ddpej",
-      "quantity": "5",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645282082/cnjcic2uwdkompuwxv3l.jpg",
+      "catePostId": 1,
+      "name": "iphone 13",
+      "price": 5000000,
+      "description": "xịn xò",
+      "quantity": 5,
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467200/jd8i1fgwmuxo6evwgvzk.jpg",
+      "id": 1
+    },
+    {
+      "catePostId": 2,
+      "name": "samsung 2021",
+      "price": 21000000,
+      "description": "đẹp ",
+      "quantity": 5,
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467241/r59f0h6leqf6zf49vbsi.jpg",
+      "id": 2
+    },
+    {
+      "catePostId": 4,
+      "name": "oppo 2022",
+      "price": 10000000,
+      "description": "đẹp ",
+      "quantity": 5,
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467276/y0bbd31rvcl2kucidqx8.jpg",
       "id": 3
     },
     {
-      "name": "iphone 22",
-      "price": "500000",
-      "description": "iol",
-      "quantity": "8",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645282128/mujurjtkcspzqxetu2cq.jpg",
+      "catePostId": 1,
+      "name": "iphone 12",
+      "price": 30000000,
+      "description": "đẹp lắm",
+      "quantity": 4,
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467319/pylahqffdm88qkzfyjym.jpg",
       "id": 4
-    },
-    {
-      "name": "iphone 15",
-      "price": "500000",
-      "description": "lop",
-      "quantity": "7",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645282170/q6zsx4bdvrclkslwb2mt.jpg",
-      "id": 5
-    },
-    {
-      "catePostId": "1",
-      "name": "iphone 20",
-      "price": "556",
-      "description": "gn",
-      "quantity": "6",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645343839/db0pvewxqosos7qyibaz.jpg",
-      "id": 8
-    },
-    {
-      "id": 10,
-      "name": "duy 25",
-      "price": "5000555",
-      "description": "duy vip",
-      "quantity": "7",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645429362/inqamp1mkbk3kjtzajft.jpg"
     }
   ],
   "catePosts": [
     {
       "name": "iphone",
-      "id": "1"
+      "id": 1
     },
     {
       "name": "samsung",

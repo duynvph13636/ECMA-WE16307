@@ -2,6 +2,7 @@ import axios from "axios";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import $ from "jquery";
 import jqueryValidate from "jquery-validation";
+import toastr from "toastr";
 import NavAdmin from "../../../components/NavAdmin";
 import { add } from "../../../api/products";
 import { getAllCate } from "../../../api/category";
@@ -93,99 +94,51 @@ const addProduct = {
         `;
     },
     afterRender() {
-        const formAdd = $("#formAdd");
+        const formAdd = document.querySelector("#formAdd");
         // eslint-disable-next-line camelcase
-        // const img_preview = document.querySelector("#img-preview");
+        const img_preview = document.querySelector("#img-preview");
         // eslint-disable-next-line camelcase
-        // const img_post = document.querySelector("#file-upload");
+        const img_post = document.querySelector("#file-upload");
 
-        // const CLOUDINARY_PRESET = "ck8bz8wq";
-        // const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
+        let imgLink = "";
 
-        formAdd.validate({
-            rules: {
-                "name_product": {
-                    require: true,
-                    minlength: 20,
-                },
-                "price_product": {
-                    require: true,
-                    digits: true,
-                },
-                "soluong_product": {
-                    require: true,
-                    digits: true,
-                },
-                "description_product": {
-                    require: true,
-                    minlength: 10,
-                    maxlength: 50,
-                },
-                "file_upload": {
-                    require: true,
+        const CLOUDINARY_PRESET = "ck8bz8wq";
+        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
 
-                },
-            },
-            messages: {
-                "name_product": {
-                    require: "Không được bỏ trống trường này",
-                    minlength: "Ít nhất phải 20 ký tự",
-                },
-                "price_product": {
-                    require: "Không được bỏ trống trường này",
-                    digits: "Phải nhập ký tự là số",
-                },
-                "soluong_product": {
-                    require: "Không được bỏ trống trường này",
-                    digits: "Phải nhập ký tự là số",
-                },
-                "description_product": {
-                    require: "Không được bỏ trống trường này",
-                    minlength: "Ít nhất phải 10 ký tự",
-                    maxlength: "Ít nhất phải 50 ký tự",
+        // eslint-disable-next-line camelcase
+        img_post.addEventListener("change", (e) => {
+            // eslint-disable-next-line camelcase
+            img_preview.src = URL.createObjectURL(e.target.files[0]);
+        });
 
-                },
-                "file_upload": {
-                    require: "Không được bỏ trống trường này",
-
-                },
-            },
-            submitHandler: () => {
-                console.log("kihbbb");
-                // async function handleAddProduct() {
-                //     let imgLink = "";
-                //     // eslint-disable-next-line camelcase
-                //     img_post.addEventListener("change", (e) => {
-                //         // eslint-disable-next-line camelcase
-                //         img_preview.src = URL.createObjectURL(e.target.files[0]);
-                //     });
-                //     const file = document.querySelector("#file-upload").files[0];
-                //     if (file) {
-                //         const formData = new FormData();
-                //         formData.append("file", file);
-                //         formData.append("upload_preset", CLOUDINARY_PRESET);
-                //         // call api cloudinary , để upload ảnh
-                //         const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                //             headers: {
-                //                 "Content-Type": "application/form-data",
-                //             },
-                //         });
-                //         imgLink = data.url;
-                //         console.log(data.url);
-                //     }
-
-                //     add({
-                //         catePostId: document.querySelector("#idCategory").value,
-                //         name: document.querySelector("#name_product").value,
-                //         price: document.querySelector("#price_product").value,
-                //         description: document.querySelector("#description_product").value,
-                //         quantity: document.querySelector("#soluong_product").value,
-                //         image: imgLink || "",
-
-                //     });
-                // }
-                // handleAddProduct();
-            },
+        formAdd.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const file = document.querySelector("#file-upload").files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
+                // call api cloudinary , để upload ảnh
+                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                imgLink = data.url;
+                console.log(data.url);
+            }
+            add({
+                catePostId: Number(document.querySelector("#idCategory").value),
+                name: document.querySelector("#name_product").value,
+                price: Number(document.querySelector("#price_product").value),
+                description: document.querySelector("#description_product").value,
+                quantity: Number(document.querySelector("#soluong_product").value),
+                image: imgLink || "",
+            });
+            toastr.success("bạn đã thêm thành công");
+            setTimeout(() => {
+                document.location.href = "/admin/products";
+            }, 2000);
         });
     },
 };

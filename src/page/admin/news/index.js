@@ -1,3 +1,4 @@
+import toastr from "toastr";
 import { getAll, remove } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
@@ -43,7 +44,7 @@ const AdminNewsPage = {
                               Name
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                              Mô tả sản phẩm
+                              Mô tả
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Status
@@ -118,8 +119,11 @@ const AdminNewsPage = {
                 const confirm = window.confirm("bạn có chắc muốn xóa không?");
                 if (confirm) {
                     remove(a);
+                    toastr.success("bạn xóa thành công");
+                    setTimeout(() => {
+                        document.location.href = "/admin/news";
+                    }, 2000);
                 }
-                document.location.href = "/admin/products";
             });
         });
     },
