@@ -82,23 +82,6 @@
       "id": 5
     },
     {
-      "name": "fvvv",
-      "price": "2000000",
-      "description": "fbbb",
-      "quantity": "5",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645287092/ajvv7e4kcztlndzwycsy.jpg",
-      "id": 6
-    },
-    {
-      "catePostId": "1",
-      "name": "dvdvv",
-      "price": "34444444",
-      "description": "dffvv",
-      "quantity": "34",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645287171/wckpkc2p08vwilk18jan.jpg",
-      "id": 7
-    },
-    {
       "catePostId": "1",
       "name": "iphone 20",
       "price": "556",
@@ -109,11 +92,11 @@
     },
     {
       "catePostId": "1",
-      "name": "iphone 13",
-      "price": "45555",
-      "description": "gb",
-      "quantity": "5",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645343875/lklgfhezycru3nbkjnkw.jpg",
+      "name": "",
+      "price": "",
+      "description": "",
+      "quantity": "",
+      "image": "",
       "id": 9
     }
   ],
