@@ -1,4 +1,7 @@
 import axios from "axios";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import $ from "jquery";
+import validate from "jquery-validation";
 import NavAdmin from "../../../components/NavAdmin";
 import { add } from "../../../api/products";
 import { getAllCate } from "../../../api/category";
@@ -38,14 +41,14 @@ const addProduct = {
                     </div>
                             <div class="col-span-6">
                                 <label class="block text-sm font-medium text-gray-700">Tên sản phẩm</label>
-                                <input type="text" id="name_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
+                                <input type="text" name="name_product" id="name_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                             </div>
                             <div>
                                 <label for="about" class="block text-sm font-medium text-gray-700">
                                 Giá sản phẩm
                                 </label>
                                 <div class="mt-1">
-                                <input type="number" id="price_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
+                                <input type="number" name="price_product" id="price_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                                 </div>
                             </div>
                             <div>
@@ -53,7 +56,7 @@ const addProduct = {
                                 Số lượng sản phẩm
                                 </label>
                                 <div class="mt-1">
-                                <input type="number" id="soluong_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
+                                <input type="number" name="soluong_product" id="soluong_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                                 </div>
                             </div>
                             <div>
@@ -61,7 +64,7 @@ const addProduct = {
                                 Mô tả sản phẩm
                                 </label>
                                 <div class="mt-1">
-                                    <textarea rows="5" id="description_product" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"></textarea>
+                                    <textarea rows="5" name="description_product" id="description_product" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +72,7 @@ const addProduct = {
                                 <label class="block text-sm font-medium text-gray-700">
                                 Ảnh sản phẩm
                                 </label>
-                                 <input type="file" id="file-upload">
+                                 <input type="file" name="file_upload" id="file-upload">
                                  <img width="200" src="https://2.bp.blogspot.com/-muVbmju-gkA/Vir94NirTeI/AAAAAAAAT9c/VoHzHZzQmR4/s1600/placeholder-image.jpg" id="img-preview" alt="">
                         </div>
                         </div>
@@ -90,7 +93,7 @@ const addProduct = {
         `;
     },
     afterRender() {
-        const formAdd = document.querySelector("#formAdd");
+        const formAdd = $("#formAdd");
         // eslint-disable-next-line camelcase
         const img_preview = document.querySelector("#img-preview");
         // eslint-disable-next-line camelcase
@@ -106,33 +109,83 @@ const addProduct = {
             img_preview.src = URL.createObjectURL(e.target.files[0]);
         });
 
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#file-upload").files[0];
-            if (file) {
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("upload_preset", CLOUDINARY_PRESET);
-                // call api cloudinary , để upload ảnh
-                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                imgLink = data.url;
-                console.log(data.url);
-            }
+        formAdd.validate({
+            rules: {
+                name_product: {
+                    require: true,
+                    minlength: 20,
+                },
+                price_product: {
+                    require: true,
+                    digits: true,
+                },
+                soluong_product: {
+                    require: true,
+                    digits: true,
+                },
+                description_product: {
+                    require: true,
+                    minlength: 10,
+                    maxlength: 50,
+                },
+                file_upload: {
+                    require: true,
 
-            add({
-                catePostId: document.querySelector("#idCategory").value,
-                name: document.querySelector("#name_product").value,
-                price: document.querySelector("#price_product").value,
-                description: document.querySelector("#description_product").value,
-                quantity: document.querySelector("#soluong_product").value,
-                image: imgLink || "",
+                },
+            },
+            messages: {
+                name_product: {
+                    require: "Không được bỏ trống trường này",
+                    minlength: "Ít nhất phải 20 ký tự",
+                },
+                price_product: {
+                    require: "Không được bỏ trống trường này",
+                    digits: "Phải nhập ký tự là số",
+                },
+                soluong_product: {
+                    require: "Không được bỏ trống trường này",
+                    digits: "Phải nhập ký tự là số",
+                },
+                description_product: {
+                    require: "Không được bỏ trống trường này",
+                    minlength: "Ít nhất phải 10 ký tự",
+                    maxlength: "Ít nhất phải 50 ký tự",
 
-            });
-            // document.location.href = "/admin/products/add";
+                },
+                file_upload: {
+                    require: "Không được bỏ trống trường này",
+
+                },
+            },
+            submitHandler: () => {
+                async function handleAddProduct() {
+                    const file = document.querySelector("#file-upload").files[0];
+                    if (file) {
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
+                        // call api cloudinary , để upload ảnh
+                        const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                        console.log(data.url);
+                    }
+
+                    add({
+                        catePostId: document.querySelector("#idCategory").value,
+                        name: document.querySelector("#name_product").value,
+                        price: document.querySelector("#price_product").value,
+                        description: document.querySelector("#description_product").value,
+                        quantity: document.querySelector("#soluong_product").value,
+                        image: imgLink || "",
+
+                    });
+                }
+                handleAddProduct();
+            },
         });
     },
 };
