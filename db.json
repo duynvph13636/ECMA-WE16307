@@ -50,14 +50,6 @@
   ],
   "products": [
     {
-      "id": 2,
-      "name": "oppo",
-      "price": "700000",
-      "description": "mccvd",
-      "quantity": "10",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645170671/cxrkcrfetvx3afv3w7sn.jpg"
-    },
-    {
       "name": "iphone 20",
       "price": "40000000",
       "description": "ddpej",
@@ -91,13 +83,12 @@
       "id": 8
     },
     {
-      "catePostId": "1",
-      "name": "",
-      "price": "",
-      "description": "",
-      "quantity": "",
-      "image": "",
-      "id": 9
+      "id": 10,
+      "name": "duy 25",
+      "price": "5000555",
+      "description": "duy vip",
+      "quantity": "7",
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645429362/inqamp1mkbk3kjtzajft.jpg"
     }
   ],
   "catePosts": [

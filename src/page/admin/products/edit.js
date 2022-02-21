@@ -68,7 +68,7 @@ const productEdit = {
                                     <label class="block text-sm font-medium text-gray-700">
                                     Ảnh sản phẩm
                                     </label>
-                                    <img src="${data.image}" alt="">
+                                    <img src="${data.image}" id="img-preview" alt="">
                                      <input type="file" id="file-upload" value="">
                             </div>
                             </div>
@@ -88,28 +88,36 @@ const productEdit = {
     },
     afterRender(id) {
         const formEdit = document.querySelector("#formEdit");
+        // eslint-disable-next-line camelcase
+        const img_preview = document.querySelector("#img-preview");
+        let linkImg = "";
         const CLOUDINARY_PRESET = "ck8bz8wq";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
         formEdit.addEventListener("submit", async (e) => {
             e.preventDefault();
             const file = document.querySelector("#file-upload").files[0];
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
-            // call api cloudinary , để upload ảnh
-            const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                },
-            });
-            console.log(data.url);
+            if (file) {
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
+                // call api cloudinary , để upload ảnh
+                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                console.log(data.url);
+                linkImg = data.url;
+            }
+
             edit({
                 id,
                 name: document.querySelector("#name_product").value,
                 price: document.querySelector("#price_product").value,
                 description: document.querySelector("#description_product").value,
                 quantity: document.querySelector("#soluong_product").value,
-                image: data.url,
+                // eslint-disable-next-line camelcase
+                image: linkImg || img_preview.src,
 
             });
             // document.location.href = "/admin/news";

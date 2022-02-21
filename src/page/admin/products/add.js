@@ -91,14 +91,18 @@ const addProduct = {
     },
     afterRender() {
         const formAdd = document.querySelector("#formAdd");
+        // eslint-disable-next-line camelcase
         const img_preview = document.querySelector("#img-preview");
+        // eslint-disable-next-line camelcase
         const img_post = document.querySelector("#file-upload");
-        const imgLink = "";
+        let imgLink = "";
 
         const CLOUDINARY_PRESET = "ck8bz8wq";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/fpolyduy/image/upload";
 
+        // eslint-disable-next-line camelcase
         img_post.addEventListener("change", (e) => {
+            // eslint-disable-next-line camelcase
             img_preview.src = URL.createObjectURL(e.target.files[0]);
         });
 
