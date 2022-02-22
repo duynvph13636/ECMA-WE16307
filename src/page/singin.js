@@ -1,6 +1,8 @@
 import toastr from "toastr";
 import { signin } from "../api/user";
 import "toastr/build/toastr.min.css";
+import $ from "jquery";
+import jqueryValidate from "jquery-validation";
 
 const Signin = {
     render() {
@@ -19,11 +21,11 @@ const Signin = {
             <div class="rounded-md shadow-sm -space-y-px">
               <div>
                 <label for="email-address" class="">Email address</label>
-                <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                <input id="email" name="e-mail" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
               </div>
               <div>
                 <label for="password" class="">Password</label>
-                <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+                <input id="password" name="pass-word" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
               </div>
              
             </div>
@@ -48,25 +50,51 @@ const Signin = {
         `;
     },
     afterRender() {
-        const formSignin = document.querySelector("#formSignin");
-        formSignin.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            try {
-                const { data } = await signin({
-                    email: document.querySelector("#email").value,
-                    password: document.querySelector("#password").value,
-                });
-                if (data) {
-                    localStorage.setItem("user", JSON.stringify(data.user));
-                    toastr.success("Bạn đăng nhập thành công , Chuyển trang sau 2s");
-                    setTimeout(() => {
-                        document.location.href = "/";
-                    }, 2000);
+        const formSignin = $("#formSignin");
+
+        formSignin.validate({
+            rules: {
+                "e-mail": {
+                    required: true,
+                    email: true,
+                },
+                "pass-word": {
+                    required: true,
+                    minlength: 6,
+                },
+            },
+            messages: {
+                "e-mail": {
+                    required: "Không để trống trường này!",
+                    email: "email không đúng định dạng!",
+                },
+                "pass-word": {
+                    required: "Không để trống trường này!",
+                    minlength: "ít nhất 6 ký tự",
+                },
+            },
+            submitHandler: () => {
+                async function handleSingin() {
+                    try {
+                        const { data } = await signin({
+                            email: document.querySelector("#email").value,
+                            password: document.querySelector("#password").value,
+                        });
+                        if (data) {
+                            localStorage.setItem("user", JSON.stringify(data.user));
+                            toastr.success("Bạn đăng nhập thành công , Chuyển trang sau 2s");
+                            setTimeout(() => {
+                                document.location.href = "/";
+                            }, 2000);
+                        }
+                        console.log(data);
+                    } catch (error) {
+                        toastr.error(error.response.data);
+                    }
                 }
-                console.log(data);
-            } catch (error) {
-                toastr.error(error.response.data);
-            }
+                handleSingin();
+            },
+
         });
     },
 };

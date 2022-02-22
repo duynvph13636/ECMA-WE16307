@@ -28,6 +28,13 @@
       "address": "tuyên quang",
       "number": "0852767256",
       "id": 2
+    },
+    {
+      "email": "abcd@gmail.com",
+      "password": "$2a$10$JVMYiFWCH8vt1Pw2xlDfhOmdeR7qWJbFqxjUD6tO62Q8kvaArc5Nq",
+      "address": "tuyên quang",
+      "number": "0852767256",
+      "id": 3
     }
   ],
   "products": [

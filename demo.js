@@ -46,3 +46,53 @@ afterRender() {
         }, 2000);
     });
 },
+////////////////////////////////////////////////////////////////////////////////
+//  afterRender() {
+    const formSignup = document.querySelector("#formSignup");
+    formSignup.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await signup({
+                email: document.querySelector("#email").value,
+                password: document.querySelector("#password").value,
+                address: document.querySelector("#address").value,
+                number: document.querySelector("#number").value,
+            });
+            if (data) {
+                toastr.success("Bạn đăng ký thành công , Chuyển trang sau 2s");
+                setTimeout(() => {
+                    document.location.href = "/signin";
+                }, 2000);
+            }
+            console.log(data);
+        } catch (error) {
+            toastr.error("Đăng ký thất bại");
+            console.log(error.response.data);
+        }
+    });
+},
+//////////////////////////
+afterRender() {
+    const formSignin = $("#formSignin");
+
+
+    formSignin.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await signin({
+                email: document.querySelector("#email").value,
+                password: document.querySelector("#password").value,
+            });
+            if (data) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                toastr.success("Bạn đăng nhập thành công , Chuyển trang sau 2s");
+                setTimeout(() => {
+                    document.location.href = "/";
+                }, 2000);
+            }
+            console.log(data);
+        } catch (error) {
+            toastr.error(error.response.data);
+        }
+    });
+},
