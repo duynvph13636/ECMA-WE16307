@@ -1,17 +1,16 @@
-import { getAllCate } from "../../api/category";
-import { getAllProducts } from "../../api/products";
-
+import { getProduct } from "../../api/products";
 import Header from "../../components/header";
 
-const productAll = {
-    async render() {
+const categoryDetail = {
+    async render(id) {
+        const { data } = await getProduct(id);
+        console.log(data);
         // let response; let a;
-        const { data } = await getAllCate();
-        const a = await getAllProducts();
+        // const { data } = await getAllCate();
         // const { data } = await getAll();
         // const { res } = await getProduct();
         // const { res } = await getProduct();
-        console.log(data);
+        // console.log(data);
         // const urlStr = window.location.href;
         // console.log(urlStr);
         // const url = new URL(urlStr);
@@ -37,7 +36,7 @@ const productAll = {
   
       <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-          <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Tất cả sản phẩm</h1>
+          <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Danh mục : ${data.name}</h1>
   
           <div class="flex items-center">
             <div class="relative inline-block text-left">
@@ -59,16 +58,16 @@ const productAll = {
             <form class="hidden lg:block">
               <h3 class="sr-only">Danh mục sản phẩm</h3>
               <ul role="list" class="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
-                 ${data.map((item) => `
+               
   
   <li>
-                  <a href="/catePosts/${item.id}">
+                  <a href="#">
                    
-                   ${item.name}
+                   ${data.name}
                   </a>
                 </li>
   
-  `).join("")}
+ 
   
               
               </ul>
@@ -89,7 +88,7 @@ const productAll = {
                 
                     <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                    
-                    ${a.data.map((icon) => `
+                    ${data.products.map((icon) => `
                     
                     <a href="/products/${icon.id}/detail" class="group">
                         <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
@@ -141,4 +140,4 @@ const productAll = {
         `;
     },
 };
-export default productAll;
+export default categoryDetail;

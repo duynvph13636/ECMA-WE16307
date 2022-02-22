@@ -20,6 +20,7 @@ import AddCategory from "./page/admin/category/add";
 import AdminNewsCategory from "./page/admin/category";
 import productAll from "./page/client/products";
 import listUser from "./page/admin/users";
+import categoryDetail from "./page/client/categorydetail";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -105,8 +106,11 @@ router.on({
     "/admin/users": () => {
         print(listUser);
     },
-    "/catePosts/:id*": ({ data }) => {
-        print(productAll, data.id);
+    // "/catePosts/:id*": ({ data }) => {
+    //     print(productAll, data.id);
+    // ,
+    "/catePosts/:id": ({ data }) => {
+        print(categoryDetail, data.id);
     },
 
 });
