@@ -4,7 +4,8 @@ import { decreaseQuantity, increaseQuantity, removeItemCart } from "../../utils/
 const cartPgae = {
     render() {
         let cart = [];
-
+      let tong =0;
+      let thanhtien=0;
         if (localStorage.getItem("cart")) {
             cart = JSON.parse(localStorage.getItem("cart"));
         }
@@ -64,7 +65,8 @@ const cartPgae = {
                     </thead>
                      <tbody class="bg-white divide-y divide-gray-200">
                     ${cart.map((post) => `
-                   
+               
+                
                     <tr>
                       <td class="px-6 py-4">
                         <div class="flex items-center">
@@ -104,9 +106,13 @@ const cartPgae = {
                       </span>
                       </td>
                       <td class="px-6 py-4">
-                      <div class="text-sm text-gray-900">${post.price * post.quantity} </div>
-                      
-                    </td>     
+                       <p hidden> ${tong=post.price * post.quantity}</p> 
+                     
+                       <div class="text-sm text-gray-900">  ${tong.toLocaleString("vi-VN", { style: "currency", currency: "VND" })}</div>
+                    </td>  
+                       
+                      <p hidden>  ${ thanhtien+=tong}</p> 
+                     
                     </tr>                                    
                     `).join("")}
                    
@@ -114,6 +120,7 @@ const cartPgae = {
                     </tbody>
                    
                   </table>
+                  <h1>Tổng tiền thanh toán:${thanhtien.toLocaleString("vi-VN", { style: "currency", currency: "VND" })}</h1>
                 </div>
               </div>
             </div>
