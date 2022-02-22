@@ -22,6 +22,13 @@
       "email": "nvduy123@gmail.com",
       "password": "$2a$10$6YVqhP/luiorO7bwVjrQ1eYJ7aIFnrFedAflGKetkt.3FXe4SBe0.",
       "id": 1
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$uS.ZW6knbuuYyEXJD3dEsOHgJqXpGYY55CGw3038eKpMMwdEnzXR6",
+      "address": "tuyên quang",
+      "number": "0852767256",
+      "id": 2
     }
   ],
   "products": [
@@ -60,6 +67,15 @@
       "quantity": 4,
       "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467319/pylahqffdm88qkzfyjym.jpg",
       "id": 4
+    },
+    {
+      "catePostId": 4,
+      "name": "oppo 2022",
+      "price": 4522,
+      "description": "đẹp lắm ",
+      "quantity": 5,
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645500849/n7xp4ozbcpnepi7qgdik.jpg",
+      "id": 5
     }
   ],
   "catePosts": [

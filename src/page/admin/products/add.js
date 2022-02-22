@@ -42,14 +42,14 @@ const addProduct = {
                     </div>
                             <div class="col-span-6">
                                 <label class="block text-sm font-medium text-gray-700">Tên sản phẩm</label>
-                                <input type="text" name="name_product" id="name_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
+                                <input type="text" name="name-product" id="name_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                             </div>
                             <div>
                                 <label for="about" class="block text-sm font-medium text-gray-700">
                                 Giá sản phẩm
                                 </label>
                                 <div class="mt-1">
-                                <input type="number" name="price_product" id="price_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
+                                <input type="number" name="price-product" id="price_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                                 </div>
                             </div>
                             <div>
@@ -57,7 +57,7 @@ const addProduct = {
                                 Số lượng sản phẩm
                                 </label>
                                 <div class="mt-1">
-                                <input type="number" name="soluong_product" id="soluong_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
+                                <input type="number" name="soluong-product" id="soluong_product" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm h-[30px] border border-gray-300 rounded-md p-1" value="">
                                 </div>
                             </div>
                             <div>
@@ -65,7 +65,7 @@ const addProduct = {
                                 Mô tả sản phẩm
                                 </label>
                                 <div class="mt-1">
-                                    <textarea rows="5" name="description_product" id="description_product" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"></textarea>
+                                    <textarea rows="5" name="description-product" id="description_product" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ const addProduct = {
                                 <label class="block text-sm font-medium text-gray-700">
                                 Ảnh sản phẩm
                                 </label>
-                                 <input type="file" name="file_upload" id="file-upload">
+                                 <input type="file" name="file-upload" id="file-upload">
                                  <img width="200" src="https://2.bp.blogspot.com/-muVbmju-gkA/Vir94NirTeI/AAAAAAAAT9c/VoHzHZzQmR4/s1600/placeholder-image.jpg" id="img-preview" alt="">
                         </div>
                         </div>
@@ -94,7 +94,7 @@ const addProduct = {
         `;
     },
     afterRender() {
-        const formAdd = document.querySelector("#formAdd");
+        const formAdd = $("#formAdd");
         // eslint-disable-next-line camelcase
         const img_preview = document.querySelector("#img-preview");
         // eslint-disable-next-line camelcase
@@ -110,36 +110,114 @@ const addProduct = {
             // eslint-disable-next-line camelcase
             img_preview.src = URL.createObjectURL(e.target.files[0]);
         });
+        formAdd.validate({
+            rules: {
+                "name-product": {
+                    required: true,
+                    minlength: 5,
+                },
+                "price-product": {
+                    required: true,
+                    digits: true,
+                },
+                "soluong-product": {
+                    required: true,
+                    digits: true,
+                },
+                "description-product": {
+                    required: true,
+                    minlength: 5,
+                },
+                "file-upload": {
+                    required: true,
 
-        formAdd.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const file = document.querySelector("#file-upload").files[0];
-            if (file) {
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("upload_preset", CLOUDINARY_PRESET);
-                // call api cloudinary , để upload ảnh
-                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                imgLink = data.url;
-                console.log(data.url);
-            }
-            add({
-                catePostId: Number(document.querySelector("#idCategory").value),
-                name: document.querySelector("#name_product").value,
-                price: Number(document.querySelector("#price_product").value),
-                description: document.querySelector("#description_product").value,
-                quantity: Number(document.querySelector("#soluong_product").value),
-                image: imgLink || "",
-            });
-            toastr.success("bạn đã thêm thành công");
-            setTimeout(() => {
-                document.location.href = "/admin/products";
-            }, 2000);
+                },
+            },
+            messages: {
+                "name-product": {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự",
+                },
+                "price-product": {
+                    required: "Không được để trống trường này",
+                    digits: "bắt buộc phải là số",
+                },
+                "soluong-product": {
+                    required: "Không được để trống trường này",
+                    digits: "bắt buộc phải là số",
+                },
+                "description-product": {
+                    required: "Không được để trống trường này",
+                    minlength: "ít nhất phải 5 ký tự",
+                },
+                "file-upload": {
+                    required: "Chưa có ảnh",
+
+                },
+            },
+
+            submitHandler: () => {
+                async function handleAddPost() {
+                    const file = document.querySelector("#file-upload").files[0];
+                    if (file) {
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
+                        // call api cloudinary , để upload ảnh
+                        const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                        console.log(data.url);
+                    }
+                    add({
+                        catePostId: Number(document.querySelector("#idCategory").value),
+                        name: document.querySelector("#name_product").value,
+                        price: Number(document.querySelector("#price_product").value),
+                        description: document.querySelector("#description_product").value,
+                        quantity: Number(document.querySelector("#soluong_product").value),
+                        image: imgLink || "",
+                    });
+                    toastr.success("bạn đã thêm thành công");
+                    setTimeout(() => {
+                        document.location.href = "/admin/products";
+                    }, 2000);
+                }
+                handleAddPost();
+            },
+
         });
+        // formAdd.addEventListener("submit", async (e) => {
+        //     e.preventDefault();
+        //     const file = document.querySelector("#file-upload").files[0];
+        //     if (file) {
+        //         const formData = new FormData();
+        //         formData.append("file", file);
+        //         formData.append("upload_preset", CLOUDINARY_PRESET);
+        //         // call api cloudinary , để upload ảnh
+        //         const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+        //             headers: {
+        //                 "Content-Type": "application/form-data",
+        //             },
+        //         });
+        //         imgLink = data.url;
+        //         console.log(data.url);
+        //     }
+        //     add({
+        //         catePostId: Number(document.querySelector("#idCategory").value),
+        //         name: document.querySelector("#name_product").value,
+        //         price: Number(document.querySelector("#price_product").value),
+        //         description: document.querySelector("#description_product").value,
+        //         quantity: Number(document.querySelector("#soluong_product").value),
+        //         image: imgLink || "",
+        //     });
+        //     toastr.success("bạn đã thêm thành công");
+        //     setTimeout(() => {
+        //         document.location.href = "/admin/products";
+        //     }, 2000);
+        // });
     },
 };
 export default addProduct;

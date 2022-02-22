@@ -41,6 +41,12 @@ const listUser = {
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Gmail
                         </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          SDT
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Address
+                        </th>
                       
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
@@ -55,6 +61,14 @@ const listUser = {
                      
                       <td class="px-6 py-4">
                         <div class="text-sm text-gray-900">  ${post.email} </div>
+                        
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900">  ${post.number} </div>
+                        
+                      </td>
+                      <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900">  ${post.address} </div>
                         
                       </td>
                      

@@ -22,6 +22,14 @@ const Signup = {
                 <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
               </div>
               <div>
+                <label for="email-address" class="">Address</label>
+                <input id="address" name="email" type="text" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              </div>
+              <div>
+                <label for="email-address" class="">Số điện thoại</label>
+                <input id="number" name="email" type="number" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              </div>
+              <div>
                 <label for="password" class="">Password</label>
                 <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
               </div>
@@ -38,7 +46,7 @@ const Signup = {
                     <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                   </svg>
                 </span>
-                Sign in
+                Sign up
               </button>
             </div>
           </form>
@@ -55,6 +63,8 @@ const Signup = {
                 const { data } = await signup({
                     email: document.querySelector("#email").value,
                     password: document.querySelector("#password").value,
+                    address: document.querySelector("#address").value,
+                    number: document.querySelector("#number").value,
                 });
                 if (data) {
                     toastr.success("Bạn đăng ký thành công , Chuyển trang sau 2s");
