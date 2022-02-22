@@ -1,12 +1,11 @@
 {
   "posts": [
     {
+      "id": "yoKWtce",
       "name": "iphone 20",
       "price": "20000",
       "description": "đpej lắm",
-      "quantity": "5",
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645169566/y1wnxzmofxjiwjtnrzao.jpg",
-      "id": "yoKWtce"
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645501753/cee31pmmml6eqq5absi5.jpg"
     },
     {
       "name": "iphone 20",
@@ -33,13 +32,13 @@
   ],
   "products": [
     {
-      "catePostId": 1,
-      "name": "iphone 13",
-      "price": 5000000,
-      "description": "xịn xò",
+      "id": 1,
+      "catePostId": 2,
+      "name": "iphone 55555",
+      "price": 500000055,
+      "description": "xịn xòllllllllll",
       "quantity": 5,
-      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467200/jd8i1fgwmuxo6evwgvzk.jpg",
-      "id": 1
+      "image": "http://res.cloudinary.com/fpolyduy/image/upload/v1645467200/jd8i1fgwmuxo6evwgvzk.jpg"
     },
     {
       "catePostId": 2,
